@@ -35,7 +35,6 @@ but most often as the result of a call to \code{\link{bild}}.}
 }
 \section{Methods}{
   \describe{
-    \item{anova}{\code{signature(object="bild")}: Display anova table.}
     \item{plot}{\code{signature(x="bild", y="missing")}: Plots six type of plots.}
     \item{show}{\code{signature(object="bild")}: Display object briefly.}
     \item{summary}{\code{signature(object="bild")}: Generate object summary.}

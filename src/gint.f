@@ -17,9 +17,7 @@
      *y2(n),lpsi(2),beta2(npar-2),bt2(npar-2),
      *dbt(npar-2),dbt1(npar-2),dbt2(npar-2),
      *dder(npar-2),ddb(3,npar-2),ddb1(4,npar-2),
-     *ddb2(5,npar-2),gbeta(npar-2),
-     *alist(limit),blist(limit),elist(limit),iord(limit),
-     *rlist(limit)
+     *ddb2(5,npar-2),gbeta(npar-2)
 
       COMMON/param/x1,theta1,work1,
      *y1,lpsi1,beta1,bt1,m,mpar,omega1

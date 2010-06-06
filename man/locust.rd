@@ -33,26 +33,31 @@ data set using their \code{S-plus} package \code{rm.tools}. }
 str(locust)
 
 
-####  dependence="MC2"
-locust2_feed1 <- bild(move~(time+I(time^2))*sex, data=locust, start=NULL,
-   subSET=feed=="1", aggregate=sex, dependence="MC2")
+####  dependence="MC2R"
+Integ <- bildIntegrate(li=-2.5,ls=2.5, lig=-2.5, lsg=2.5)   
+locust2r_feed1 <- bild(move~(time+I(time^2))*sex, data=locust, start=NULL,
+   subSET=feed=="1", aggregate=sex, dependence="MC2R", integrate=Integ)
 
-summary(locust2_feed1)
+summary(locust2r_feed1)
 
-plot(locust2_feed1, which=5, ylab="probability of locomoting", 
+plot(locust2r_feed1, which=5, ylab="probability of locomoting", 
     main="Feed=1", add.unadjusted=TRUE)
 
-locust2 <- bild(move~(time+I(time^2))*feed, data=locust, start=NULL, 
-        aggregate=feed, dependence="MC2")
+plot(locust2r_feed1, which=6, subSET=sex=="1", main="Sex==1 & Feed=1", ident=TRUE)
+
+locust2r <- bild(move~(time+I(time^2))*feed, data=locust, start=NULL, trace=TRUE, 
+        aggregate=feed, dependence="MC2R", integrate=Integ)
 
 par(mfrow=c(2,2))
-plot(locust2, which=1)
-plot(locust2, which=2)
-plot(locust2, which=3)
-plot(locust2, which=4)
+plot(locust2r, which=1)
+plot(locust2r, which=2)
+plot(locust2r, which=3)
+plot(locust2r, which=4)
 par(mfrow=c(1,1))
 
-plot(locust2, which=5, ylab="probability of locomoting", add.unadjusted=TRUE)
+plot(locust2r, which=5, ylab="probability of locomoting", add.unadjusted=TRUE)
 
+plot(locust2r, which=6, ident=TRUE, ylab="probability of locomoting", 
+    main="Feed & Unfeed groups")
 }
 \keyword{datasets}

@@ -19,14 +19,7 @@ longitudinal data using "S4" classes and methods as implemented in the \code{met
 Faculty of Sciences, University of Lisbon.
   
 \enc{Gonçalves}{Goncalves}, M. Helena and Azzalini, A. (2008). Using Markov chains for marginal modelling of binary longitudinal data 
-in an exact likelihood approach. \emph{Metron}, vol LXVI, 2, 157-181.
-  
-\enc{Gonçalves}{Goncalves} MH, Cabral MS and Azzalini A (2012). 
-The R Package \code{bild} for the Analysis of Binary Longitudinal Data. \emph{Journal of Statistical Software}, 46(9), 1-17.}
-
-\section{Acknowledgments}{We would like to thank the CRAN team for help in the fine tuning of the Fortran code.}
-
+  in an exact likelihood approach. \emph{Metron}, vol LXVI, 2, 157-181.}
 \keyword{package}
-
 \seealso{\code{\link{bild-class}}, \code{\link{bild}}, \code{\link[methods]{Methods}}}      
 

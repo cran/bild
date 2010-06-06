@@ -1,3 +1,7 @@
+.First.lib<-function(libname,pkgname)
+{
+library.dynam("bild",pkgname,libname)
+invisible()}
 
 setClass("summary.bild", representation(coefficients = "matrix", se = "matrix", covariance = "matrix", correlation="matrix", 
 		log.likelihood="numeric", message ="integer",n.cases="numeric", ni.cases="numeric", aic="numeric",call="language"))
@@ -22,41 +26,7 @@ integrate=bildIntegrate())
 # *****************DEFINITION OF INTERNAL FUNCTIONS ******************
 # na.action for binary families
 
-na.discrete.replace1 <- function(frame,  n.times, ti.repl)
-	{
-	vars <- names(frame)
-	names(vars) <- vars
-	cumti.repl<-cumsum(ti.repl)
-	n.cases<- length(ti.repl)
-	badlines<-NULL
-	bad.ind<-NULL
-	for(j in 1:length(vars)) 
-	{k1<-1
-	for (i in 1:n.cases)
-	{k2<-cumti.repl[i]
-	x <- frame[[j]][k1:k2]
-	pos <- is.na(x)
-	if(any(pos))
-			if(j == 1){distance.between.na <- diff(seq(1, n.times)[!pos])
-					if (any(distance.between.na > 2 ))
-					{badlines<-c(badlines,c(k1:k2))
-					bad.ind<-c(bad.ind,i)
-					x[pos] <- -1}
-				x[pos] <- -1}
-			else stop("NA's on covariates not allowed")
-	frame[[j]][k1:k2]<-x
-	k1<-k2+1
-	} 
-	}
-		if (length(bad.ind)>=1)
-		cat("Warning Message: Condition on NA's not respected:\nresults might be inaccurate\n")
-		return(list(data=frame, badlines=badlines,bad.ind=bad.ind))
-	}
-
-
-
-
-na.discrete.replace2 <- function(frame,  n.times, ti.repl)
+na.discrete.replace <- function(frame,  n.times, ti.repl)
 	{
 	vars <- names(frame)
 	names(vars) <- vars
@@ -106,7 +76,7 @@ na.discrete.replace2 <- function(frame,  n.times, ti.repl)
 #
 	num.info <- function(coefficients, FUN, X, data)
 	{
-		FUN <- get(FUN, inherits = TRUE)
+		FUN <- get(FUN, inherit = TRUE)
 		values <- FUN(coefficients, X, data)
 		p <- length(values)
 		Info <- matrix(0, p, p)
@@ -126,7 +96,7 @@ na.discrete.replace2 <- function(frame,  n.times, ti.repl)
 
 	num.infoI <- function(coefficients, FUN, X, data,integrate)
 	{
-		FUN <- get(FUN, inherits = TRUE)
+		FUN <- get(FUN, inherit = TRUE)
 		values <- FUN(coefficients, X, data,integrate)
 		p <- length(values)
 		Info <- matrix(0, p, p)
@@ -283,119 +253,7 @@ return(list(nloglik=-logL, pij=prob))}
 logL.bin2mf<- function(parameters, X, data,trace)
         logL.bin2mf.aux(parameters, X, data,trace)$nloglik
 
-######################################################################## começa novo
 # ------------------------------------------------------------------- 
-	
-logL.bin0Ifm<- function(parameters, X, data, integrate, trace)
-{
-	loglik1 <- function(param, X, y,integrate,trace)
-	{
-	npar <-as.integer(length(param))
-	beta<- as.double(param[1:(npar-1)])
-	bt<- as.double(param[1:(npar-1)])
-	log.psi<-as.double(0)
-	omega<-as.double(param[npar])
-	y[is.na(y)]<-(-1)
-	y<- as.integer(y)
-	n <- as.integer(length(y)) 
-	x<-matrix(as.double(X),nrow=n,ncol=npar-1)
-	theta<- work<-as.double(rep(0,n))
-	logL <- as.double(0)
-
-	li<-as.double(integrate$li)
-	ls<-as.double(integrate$ls)
-	epsabs<-as.double(integrate$epsabs)
-	epsrel<-as.double(integrate$epsrel)
-	limit<-as.integer(integrate$limit)
-	key<-as.integer(integrate$key)
-
- 		results <- .Fortran("integ1",logL,bt,beta,log.psi,omega,npar,
-		x,y,theta,work,n,li,ls,epsabs,epsrel,key,limit,PACKAGE="bild")
-
-	return(results[[1]])}
-	
-		if(trace)	cat(paste("\t",(format(parameters[length(parameters)], digit=4)), collapse=" "), "\t")
-
-	nparam<-length(parameters)
-	omega1<-as.double(parameters[nparam])
-	ti.repl<-data[[1]]
-	cumti.repl<-cumsum(ti.repl)
-	n.cases<- length(ti.repl)
-	y<-data[[2]]
-	counts<-data[[3]]
-	mt<-as.double(rep(0,length(y)))
-	logL1<-as.double(0)
-	k1<-1
-	for (i in 1:n.cases)
-	{
-	k2<-cumti.repl[i]
-	z<-loglik1(param=parameters,X=X[k1:k2,], y=y[k1:k2],integrate=integrate,trace=trace)
-	#logL1 gives the log-likelihood
-	logL1<-logL1+counts[i]*z
-	k1<-k2+1
-	}
-		if(trace)	cat(paste("\t",(format( logL1,digit=6)), collapse=" "), "\n")
-return(nloglik=-logL1)}
-
-
-######## to compute pij
-
-logL.bin0I.aux<- function(parameters, X, data, trace)
-{
-	loglik1 <- function(param, X, y,trace)
-	{
-	
-	npar <-as.integer(length(param))
-	beta<- as.double(param[1:(npar-1)])
-	bt<- as.double(param[1:(npar-1)])
-	log.psi<-as.double(0)
-	omega<-as.double(param[npar])
-	y<- as.integer(y)
-	n <- as.integer(length(y)) 
-	x<-matrix(as.double(X),nrow=n,ncol=npar-1)
-	theta<- work<-pij<- prob<-as.double(rep(0,n))
-	logL <- as.double(0)
-	eta<-i.fit<- fit<-as.vector(npar-1)
-	eta<-x%*%beta
-	m<-glm(as.numeric(y)~offset(eta), family=binomial)
-	bi<-coef(m)
-	beta[1]<-beta[1]+bi
-	y[is.na(y)]<-(-1)
-	y<- as.integer(y)
-	
-	results <- .Fortran("mblik1",logL,prob,beta,log.psi, npar,x,y,theta,work,n,PACKAGE="bild")
-
-
-	i.fit<-x%*%beta
-
-	return(list(loglik=results[[1]],pij=results[[2]], fit=i.fit))}
-	
-		if(trace)	cat(paste("\t",(format(parameters[length(parameters)], digit=4)), collapse=" "), "\t")
-
-	nparam<-length(parameters)
-	omega1<-as.double(parameters[nparam])
-	ti.repl<-data[[1]]
-	cumti.repl<-cumsum(ti.repl)
-	n.cases<- length(ti.repl)
-	y<-data[[2]]
-	counts<-data[[3]]
-	mt<-fitted<-as.double(rep(0,length(y)))
-	logL1<-as.double(0)
-	k1<-1
-	for (i in 1:n.cases)
-	{
-	k2<-cumti.repl[i]
-	z<-loglik1(param=parameters,X=X[k1:k2,], y=y[k1:k2],trace=trace)
-	mt[k1:k2]<-z$pij
-	fitted[k1:k2]<-z$fit
-	k1<-k2+1
-	}
-
-return(list(pij=mt, fit=fitted))}
-
-
-# ------------------------------------------------------------------- acaba novo
-
 
 logL.bin1Ifm<- function(parameters, X, data, integrate, trace)
 {
@@ -503,8 +361,9 @@ logL.bin1.aux<- function(parameters, X, data, trace)
 	fitted[k1:k2]<-z$fit
 	k1<-k2+1
 	}
+		if(trace)	cat(paste("\t",(format( logL1,digit=6)), collapse=" "), "\n")
 
-return(list(pij=mt, fit=fitted))}
+return(list(nloglik=-logL1, pij=mt, fit=fitted))}
 
 # ------------------------------------------------------------------- 
 
@@ -594,9 +453,8 @@ logL.bin2.aux<- function(parameters, X, data,trace)
 
 	return(list(loglik=results[[1]],pij=results[[2]],fit=i.fit ))}
 
-		if(trace)	cat(paste(format(parameters[length(parameters)-2], digit=4), collapse=" "), "\t")
-		if(trace)	cat(paste("\t",(format(parameters[length(parameters)-1], digit=4)), collapse=" "), "\t")
-		if(trace)	cat(paste("\t",(format(parameters[length(parameters)], digit=4)), collapse=" "), "\t")
+		if(trace)	cat(paste(format(parameters[length(parameters)-1], digit=3), collapse=" "), "\t")
+		if(trace)	cat(paste("\t",(format(parameters[length(parameters)], digit=3)), collapse=" "), "\t")
 
 	ti.repl<-data[[1]]
 	cumti.repl<-cumsum(ti.repl)
@@ -614,8 +472,9 @@ logL.bin2.aux<- function(parameters, X, data,trace)
 	fitted[k1:k2]<-z$fit
 	k1<-k2+1
 	}
+		if(trace)	cat(paste("\t",(format( logL,digit=6)), collapse=" "), "\n")
 
-return(list(pij=prob, fit=fitted))}
+return(list(nloglik=-logL, pij=prob, fit=fitted))}
 
 ########################################################################
 # compute gradient loglik for binary response
@@ -743,104 +602,6 @@ gradlogL.bin2mf<- function(parameters, X,data, trace)
 	}
 return(-gradlogL)}
 # ------------------------------------------------------------------- 
-
-
-######################################################################## começa novo
-# ------------------------------------------------------------------- 
-
-gradlogL.bin0Ifm <- function(parameters, X,data,integrate,trace)
-{
-	gradient1 <-  function(param,X,y,integrate)
-	{
-	y[is.na(y)]<-(-1)
-	y <- as.integer(y)
-	n <- as.integer(length(y)) 
-  	npar <- as.integer(length(param))
-	beta <- as.double(param[1:(npar-1)])
-	bt <- as.double(param[1:(npar-1)])
-	lpsi <- as.double(0)
-	omega<-as.double(param[npar])
-  	theta <- work <- as.double(rep(0,n))
-  	g.beta <- d.beta <- d.beta1<- der <- as.double(rep(0,npar-1))
-  	g.lpsi1<- as.double(0)
-  	d.beta <- matrix(as.double(0),3,npar-1)
-	gvar<-as.double(0)
- 	x <- matrix(as.double(X),nrow=n, ncol=npar-1)
-  	db <- matrix(as.double(0),3,npar-1)
-
-	li<-as.double(integrate$lig)
-	ls<-as.double(integrate$lsg)
-	epsabs<-as.double(integrate$epsabs)
-	epsrel<-as.double(integrate$epsrel)
-	limit<-as.integer(integrate$limit)
-	key<-as.integer(integrate$key)
-
-
-	result <- .Fortran("gint1",g.beta,g.lpsi1,gvar,bt,beta,lpsi,omega,npar,x,y,theta,work,n,
-                  d.beta,d.beta1,der,db,li,ls,epsabs,epsrel,key,limit,PACKAGE="bild")
-
-
-	return(c(result[[1]],result[[3]]))}
-
-	loglik1 <- function(param, X, y,integrate)
-	{
-	npar <- as.integer(length(param))
-	beta <- as.double(param[1:(npar-1)])
-	bt <- as.double(param[1:(npar-1)])
-	lpsi <- as.double(0)
-	omega<-as.double(param[npar])
-	y[is.na(y)]<-(-1)
-	y <- as.integer(y)
-	n <- as.integer(length(y)) 
-	x <-matrix(as.double(X),nrow=n,ncol=npar-1)
-	theta <- work <-as.double(rep(0,n))
-	logL <- as.double(0)
-
-	li<-as.double(integrate$lig)
-	ls<-as.double(integrate$lsg)
-	epsabs<-as.double(integrate$epsabs)
-	epsrel<-as.double(integrate$epsrel)
-	limit<-as.integer(integrate$limit)
-	key<-as.integer(integrate$key)
-
- 		results <- .Fortran("integ1",logL,bt,beta,lpsi,omega,npar,
-		x,y,theta,work,n,li,ls,epsabs,epsrel,key,limit,PACKAGE="bild")
-
-return(results[[1]])}
-
-	nparam <- as.integer(length(parameters))
-	omega1<-parameters[nparam]
-	ti.repl<-data[[1]]
-	cumti.repl<-cumsum(ti.repl)
-	n.cases<- length(ti.repl)
-	y<-data[[2]]
-	counts<-data[[3]]
-	dbeta<-as.double(rep(0,nparam-1))
-	dlog.psi1<-0
-	dvar<-0
-	k1<-1
-	for (i in 1:n.cases)
-	{
-	k2<-cumti.repl[i]
-	z<-loglik1(param=parameters,X=X[k1:k2,], y=y[k1:k2],integrate=integrate)
-	grad<-gradient1(param=parameters,X=X[k1:k2,], y=y[k1:k2],integrate=integrate)
-
-	for (j in 1:(nparam-1))
-	{
-	dbeta[j]<-dbeta[j]+counts[i]*(grad[j]/(exp(z)*sqrt(2*pi)*exp(omega1/2)))	
-	}
-
- #using the chain rule
-	dvar<-dvar+counts[i]*(grad[nparam]/(exp(z)*sqrt(2*pi)*exp(omega1/2)))*exp(omega1)
-	k1<-k2+1
-	}
-gr<-c(dbeta, dvar)
- return(-gr)}
-
-
-######################################################################## acaba novo
-# ------------------------------------------------------------------- 
-
 
 gradlogL.binI1fm <- function(parameters, X,data,integrate,trace)
 {
@@ -1102,16 +863,8 @@ subset.data<-data
 # ********** creation of individual profile according to NA patterns *******************
 
 	data2<-data
-		
-	if (dependence=="MC2"|| dependence=="MC2R")
-
-	{final.data <- na.discrete.replace2(frame=data,  n.times=n.time, ti.repl=ti.repl)}
-
-	else if (dependence=="ind"|| dependence=="indR"||dependence=="MC1"|| dependence=="MC1R")
-
-	{final.data <- na.discrete.replace1(frame=data,  n.times=n.time, ti.repl=ti.repl)}
-
-
+	final.data <- na.discrete.replace(frame=data,  n.times=n.time, ti.repl=ti.repl)
+	
 if (length(final.data$bad.ind)>=1)
 	{data<-final.data$data
 	data<-data[-final.data$badlines,]
@@ -1134,7 +887,6 @@ else {data<-final.data$data}
 		else  if (dependence=="MC1R")  init<-c(0,0)
 		else  if (dependence=="MC2")    init<-c(0,0)
 		else  if (dependence=="MC2R")   init<-c(0,0,0)
-		else  if (dependence=="indR")  init<-0
 
 		if(is.null(start) && dependence!="ind")
 			start <- c(lm(formula, data1, weights = counts)$coefficients, init)
@@ -1157,12 +909,6 @@ if (any(is.na(start))) stop("starting values produced by lm contains NA")
 	{	if(trace)	cat("\t log.likelihood\n")
 	temp <-optim(par= start, fn = logL.bin0,  gr= gradlogL.bin0, method=method, 
 	data = data, X = X, trace=trace,control=control)}
-
-	else  if (dependence=="indR")
-	{	if(trace)	cat("\n omega\t log.likelihood\n")
-	temp <- optim(par = start, fn =logL.bin0Ifm,gr = gradlogL.bin0Ifm,  method=method, 
-	data = data, X = X, integrate=integrate, trace=trace,control=control)}
-
 	else if (dependence=="MC1")
 	{	if(trace)	cat("\n log.psi1\t log.likelihood\n")
 	temp <-optim(par= start, fn = logL.bin1mf ,  gr= gradlogL.bin1mf, method=method, 
@@ -1187,12 +933,10 @@ if (any(is.na(start))) stop("starting values produced by lm contains NA")
 
 	 if (dependence=="ind")
 	Info <- num.info(coefficients, "gradlogL.bin0", X, data)
-	else  if (dependence=="indR")
-	Info <- num.infoI(coefficients, "gradlogL.bin0Ifm", X, data, integrate=integrate)
 	else if (dependence=="MC1")
 	Info <- num.info(coefficients, "gradlogL.bin1mf", X, data)
 	else  if (dependence=="MC1R")
-	Info <- num.infoI(coefficients, "gradlogL.binI1fm", X, data, integrate=integrate)
+	Info <- num.infoI(coefficients, "gradlogL.binI1fm", X, data,integrate=integrate)
 	else  if (dependence=="MC2")
 	Info <- num.info(coefficients, "gradlogL.bin2mf", X, data)
 	else  if (dependence=="MC2R")
@@ -1202,8 +946,6 @@ if (any(is.na(start))) stop("starting values produced by lm contains NA")
 	coefficients <- matrix(coefficients, ncol = 1)
 	if (dependence=="ind")
 	dimnames(coefficients) <- dimnames(se) <- list(names.output, " ")
-	else  if (dependence=="indR")
-	dimnames(coefficients) <- dimnames(se) <-  list(c(names.output, "omega"), " ")
 	else if (dependence=="MC1")
 	dimnames(coefficients) <- dimnames(se) <- list(c(names.output, "log.psi1"), " ")
 	else  if (dependence=="MC1R")
@@ -1220,11 +962,6 @@ if (any(is.na(start))) stop("starting values produced by lm contains NA")
 	if (dependence=="ind")
 	{dimnames(covariance) <- list(names.output, names.output)
 	dimnames(correlation) <- list(names.output, names.output)}
-
-	else  if (dependence=="indR")
-	{dimnames(covariance) <- list(c(names.output, "omega"), c(names.output, "omega"))
-	dimnames(correlation) <- list(c(names.output, "omega"), c(names.output, "omega"))}
-
 	else if (dependence=="MC1")
 	{dimnames(covariance) <- list(c(names.output, "log.psi1"), c(names.output, "log.psi1"))
 	dimnames(correlation) <- list(c(names.output, "log.psi1"), c(names.output, "log.psi1"))}
@@ -1241,9 +978,6 @@ if (any(is.na(start))) stop("starting values produced by lm contains NA")
 #### To compute estimated transition probabilities
  	if (dependence=="ind")
 	{pr <- logL.bin0.aux (parameters=coefficients, X=X, data=data, trace=trace)
-	prob<-pr$pij}
-	else  if (dependence=="indR")
-	{pr <- logL.bin0I.aux (parameters=coefficients, X=X, data=data2, trace=trace)
 	prob<-pr$pij}
 	else if (dependence=="MC1")
 	{pr <- logL.bin1mf.aux (parameters=coefficients, X=X, data=data, trace=trace)
@@ -1262,9 +996,6 @@ if (any(is.na(start))) stop("starting values produced by lm contains NA")
 	Fitted <- rep(NA, n.tot)
  	if (dependence=="ind"|dependence=="MC1"|dependence=="MC2")
 	{Fitted[id.not.na] <- X %*% coefficients[1:(p - 1)]}
-	else  if (dependence=="indR")
-	{F.aux<- logL.bin0I.aux (parameters=coefficients, X=X, data=data2, trace=trace)
-	Fitted<-F.aux$fit}
 	else  if (dependence=="MC1R")
 	{F.aux<- logL.bin1.aux (parameters=coefficients, X=X, data=data2, trace=trace)
 	Fitted<-F.aux$fit}
@@ -1295,10 +1026,13 @@ if (any(is.na(start))) stop("starting values produced by lm contains NA")
 	k3<-k2+j
  	if(!is.na(y[k3]))
      		{
-      		soma.n<-soma.n+(y[k3]-prob[k3])
-  		soma.d<-soma.d+(prob[k3]*(1-prob[k3]))
-       		}
-	k2<-cumti.repl[i]
+      		if(!is.na(prob[k3]))
+      			{
+    			soma.n<-soma.n+(y[k3]-prob[k3])
+  			soma.d<-soma.d+(prob[k3]*(1-prob[k3]))
+  			k2<-cumti.repl[i]
+      			}
+     		}
   	}
 	res[j]<-soma.n/sqrt(soma.d)
 	}

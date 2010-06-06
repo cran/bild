@@ -11,9 +11,7 @@
       DIMENSION x1(4500,10),theta1(4500),work1(4500),
      *y1(4500),lpsi1(2),beta1(10),bt1(10),
      *x2(n,npar-2),beta2(npar-2),
-     *theta2(n),lpsi(2),y2(n),work2(n),bt2(npar-2),
-     *alist(limit),blist(limit),elist(limit),iord(limit),
-     *rlist(limit)
+     *theta2(n),lpsi(2),y2(n),work2(n),bt2(npar-2)
 
       COMMON/param/x1,theta1,work1,
      *y1,lpsi1,beta1,bt1,m,mpar,omega1
