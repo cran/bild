@@ -1,0 +1,39 @@
+citHeader("To cite the bild package in publications use:")
+
+desc <- packageDescription("bild")
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", desc$Date)
+vers <- paste("Version", desc$Version)
+
+
+citEntry(entry="article",
+         title = paste("Using Markov chains for marginal modelling of binary",
+                 	"longitudinal data in an exact likelihood approach"),
+         author = personList(as.person("M. Helena Gonçalves"), 
+                             as.person("Adelchi Azzalini")),
+         year         = "2008",
+         journal      = "Metron",
+         volume       = "LXVI",
+       	 number	      = "2",
+         pages        = "157--181",         
+         textVersion = 
+         paste("Gonçalves, M. Helena and Azzalini, A. (2008).", 
+               "Using Markov chains for marginal modelling of binary",
+               "longitudinal data in an exact likelihood approach.",
+               "Metron,  LXVI, n.2, 157-181", sep=" ")
+)
+
+citEntry(entry="manual",
+         title = "bild: a package for BInary Longitudinal Data",
+         author = personList(as.person("M. Helena Gonçalves"),
+			                          as.person("M. Salomé Cabral"), 
+                             as.person("Adelchi Azzalini")),
+         year = year,
+         note = vers,  
+       	 url = "http://CRAN.R-project.org/package=bild",
+	        textVersion = 
+	        paste("Gonçalves, M. H., Cabral, M. S., and Azzalini, A.",
+         	  "(", year, "). bild: a package for BInary Longitudinal Data, ",
+	           vers, ". URL: http://CRAN.R-project.org/package=bild", sep="") 
+)
+ 
+  

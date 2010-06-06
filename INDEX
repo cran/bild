@@ -1,0 +1,18 @@
+airpollution            Air Pollution
+bild                    fit of parametric models for binary
+                        longitudinal data via likelihood method
+bild-class              Class "bild" for results of a maximum
+                        likelihood estimation
+bild-package            bild: a package for BInary Longitudinal Data
+bildControl             Auxiliary for Controlling "bild" Fitting
+bildIntegrate           Auxiliary for Controlling "bild" Fitting
+getAIC                  Extract the Akaike Information Criterion
+getAIC-methods          Extract the Akaike Information Criterion
+getLogLik               Extract Log-Likelihood
+getLogLik-methods       Extract Log-Likelihood
+locust                  Locust
+muscatine               Muscatine
+plot-methods            Methods for function plot in package "bild"
+show-methods            Methods for function show in package "bild"
+summary-methods         Methods for Function summary in package "bild"
+summary.bild-class      Class "summary.bild", summary of "bild" objects
