@@ -42,7 +42,7 @@ and a plot for the individual mean profile (which=6). By default, the first five
  \item{\code{signature(x="ANY", y="ANY")}:}{Generic function.}
     \item{\code{signature(x="bild", y="missing")}:}{Plot diagnostics for \code{\link{bild}} object.}
 }}
-\examples{
+\examples{\donttest{ 
 str(locust)
 
 ####  dependence="MC2R"
@@ -76,5 +76,5 @@ plot(locust2r, which=5, ylab="probability of locomoting",
 
 plot(locust2r, which=6, ylab="probability of locomoting",
     main="Fed & Unfed groups", ident=TRUE)
-}
+}}
 \keyword{methods}

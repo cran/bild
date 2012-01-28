@@ -1,0 +1,23 @@
+R package 'bild' history file
+-------------------------------
+
+2010-06-06, version 1.0-0: first upload to CRAN
+
+2012-01-08, version 1.0-1: 
+- NAMESPACE introduced on request from R Core Team;
+- amended FORTRAN code to comply with CRAN standards:
+  In directory src/ d1mach.c was created to substitute the existing d1mach.f 
+  in order to fix a problem of showing ERRORs when compiled with the current 
+  version of gcc, 4.6.2. 
+- CITATION include a new article of JSS related to bild
+- fixed a bug in bild function: 
+  in directory R/bild.R  change 'inherit' to 'inherits' in the argument 
+  of both functions: num.info and num.infoI.	
+
+2012-01-15, version 1.0-2: 
+- Makevars introduced in directory src;
+
+
+2012-01-28, version 1.0-3: 
+- Makevars removed in directory src;
+- amended FORTRAN code in functions integ.f, integ1.f, gint.f and gint1.f.

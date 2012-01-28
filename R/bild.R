@@ -1,7 +1,3 @@
-.First.lib<-function(libname,pkgname)
-{
-library.dynam("bild",pkgname,libname)
-invisible()}
 
 setClass("summary.bild", representation(coefficients = "matrix", se = "matrix", covariance = "matrix", correlation="matrix", 
 		log.likelihood="numeric", message ="integer",n.cases="numeric", ni.cases="numeric", aic="numeric",call="language"))
@@ -76,7 +72,7 @@ na.discrete.replace <- function(frame,  n.times, ti.repl)
 #
 	num.info <- function(coefficients, FUN, X, data)
 	{
-		FUN <- get(FUN, inherit = TRUE)
+		FUN <- get(FUN, inherits = TRUE)
 		values <- FUN(coefficients, X, data)
 		p <- length(values)
 		Info <- matrix(0, p, p)
@@ -96,7 +92,7 @@ na.discrete.replace <- function(frame,  n.times, ti.repl)
 
 	num.infoI <- function(coefficients, FUN, X, data,integrate)
 	{
-		FUN <- get(FUN, inherit = TRUE)
+		FUN <- get(FUN, inherits = TRUE)
 		values <- FUN(coefficients, X, data,integrate)
 		p <- length(values)
 		Info <- matrix(0, p, p)
@@ -453,8 +449,9 @@ logL.bin2.aux<- function(parameters, X, data,trace)
 
 	return(list(loglik=results[[1]],pij=results[[2]],fit=i.fit ))}
 
-		if(trace)	cat(paste(format(parameters[length(parameters)-1], digit=3), collapse=" "), "\t")
-		if(trace)	cat(paste("\t",(format(parameters[length(parameters)], digit=3)), collapse=" "), "\t")
+		if(trace)	cat(paste(format(parameters[length(parameters)-2], digit=4), collapse=" "), "\t")
+		if(trace)	cat(paste("\t",(format(parameters[length(parameters)-1], digit=4)), collapse=" "), "\t")
+		if(trace)	cat(paste("\t",(format(parameters[length(parameters)], digit=4)), collapse=" "), "\t")
 
 	ti.repl<-data[[1]]
 	cumti.repl<-cumsum(ti.repl)
@@ -936,7 +933,7 @@ if (any(is.na(start))) stop("starting values produced by lm contains NA")
 	else if (dependence=="MC1")
 	Info <- num.info(coefficients, "gradlogL.bin1mf", X, data)
 	else  if (dependence=="MC1R")
-	Info <- num.infoI(coefficients, "gradlogL.binI1fm", X, data,integrate=integrate)
+	Info <- num.infoI(coefficients, "gradlogL.binI1fm", X, data, integrate=integrate)
 	else  if (dependence=="MC2")
 	Info <- num.info(coefficients, "gradlogL.bin2mf", X, data)
 	else  if (dependence=="MC2R")

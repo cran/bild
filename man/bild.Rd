@@ -114,13 +114,16 @@ fitting. See the example of \code{\link{locust}} data.
 Faculty of Sciences, University of Lisbon.
   
 \enc{Gonçalves}{Goncalves}, M. Helena and Azzalini, A. (2008). Using Markov chains for marginal modelling of binary longitudinal data 
-  in an exact likelihood approach. \emph{Metron}, vol LXVI, 2, 157-181.}
+in an exact likelihood approach. \emph{Metron}, vol LXVI, 2, 157-181.
+  
+M. Helena \enc{Gonçalves}{Goncalves},  M. \enc{Salomé}{Salome} Cabral and Adelchi Azzalini (2012). 
+The R Package \code{bild} for the Analysis of Binary Longitudinal Data. \emph{Journal of Statistical Software}, 46(4), 1-17.}
   
 \author{M. Helena \enc{Gonçalves}{Goncalves}, M. \enc{Salomé}{Salome} Cabral and Adelchi Azzalini}
 
 \seealso{\code{\link{bild-class}}, \code{\link{bildControl}}, \code{\link{bildIntegrate}}, \code{\link[stats]{optim}}}
 
-\examples{
+\examples{\donttest{ 
 #####  data= airpollution, dependence="MC2R"
 str(airpollution)
 
@@ -146,6 +149,6 @@ summary(musc2)
 getAIC(musc2)
 getLogLik(musc2)
 
-}
+}}
 
 \keyword{function}
