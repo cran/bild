@@ -5,7 +5,7 @@ year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", desc$Date)
 vers <- paste("Version", desc$Version)
 
 
-citEntry(entry="article",
+citEntry(entry="Article",
          title = paste("Using Markov chains for marginal modelling of binary",
                  	"longitudinal data in an exact likelihood approach"),
          author = personList(as.person("M. Helena Gonçalves"), 
@@ -36,4 +36,22 @@ citEntry(entry="manual",
 	           vers, ". URL: http://CRAN.R-project.org/package=bild", sep="") 
 )
  
-  
+
+citEntry(entry = "Article",
+  title        = "The {R} Package {bild} for the Analysis of Binary Longitudinal Data",
+  author       = personList(as.person("M. Helena Gonçalves"),
+                   as.person("M. Salomé Cabral"),
+                   as.person("Adelchi Azzalini")),
+  journal      = "Journal of Statistical Software",
+  year         = "2012",
+  note       = "Forthcoming",
+ 
+
+  textVersion  =
+  paste("Gonçalves MH, Cabral MS, Azzalini A (2012).",
+        "The R Package bild for the Analysis of Binary Longitudinal Data.",
+        "Journal of Statistical Software, Forthcoming.")
+
+)
+
+

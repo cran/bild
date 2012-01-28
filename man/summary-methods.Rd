@@ -19,7 +19,7 @@ Markov chain, or both \code{log.psi1} and \code{log.psi2} if the dependence stru
 to a second-order Markov chain. \code{log.psi1} is the log-odds ratio between adjacent observations and 
 \code{log.psi2} is the logarithm of conditional odds ratio for observations separated by one time point. 
 If the structure of the dependence model chosen includes the random intercept (models "\code{MC1R}" and "\code{MC2R}") 
-the estimate of the random effect (\code{omega}) will also appear where \code{omega}=\deqn{\log}{log}\deqn{\sigma^2}{sigma^2}.}
+the estimate of the random effect (\code{omega}) will also appear where \eqn{\omega=\log\sigma^2}{\omega=log(\omega^2)}.}
 \section{Methods}{
 \describe{
 \item{\code{signature(object = "ANY")}:}{Generic function.}

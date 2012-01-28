@@ -32,7 +32,7 @@
  
 For given values of \code{li} and \code{ls}, the above-described
 numerical integration is performed over the interval 
-(\code{li}*\eqn{\sigma}, \code{ls}*\eqn{\sigma}), where \eqn{\sigma=\exp (\omega)/2}
+(\code{li}*\eqn{\sigma}, \code{ls}*\eqn{\sigma}), where \eqn{\sigma=\exp(\omega)/2}
 is  associated to the current parameter value \eqn{\omega} examined by
 the \code{optim} function.  In some cases, this integration may
 generate an error, and the user must suitably adjust the values of \code{li} 
@@ -56,7 +56,7 @@ limits (\code{lig} and \code{lsg}) in \code{bildIntegrate} function might solve 
 
 \seealso{\code{\link{bild-class}}}
 
-\examples{  
+\examples{ \donttest{ 
 ####  data=locust, dependence="MC2R"                                                   
 str(locust)                                                                            
                                                                                        
@@ -69,6 +69,6 @@ summary(locust2r_feed1)
 getAIC(locust2r_feed1)                                                                 
 getLogLik(locust2r_feed1)                                                              
 plot(locust2r_feed1)                                                                   
-}
+}}
 
 \keyword{function}
