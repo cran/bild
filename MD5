@@ -1,4 +1,4 @@
-171cc69da625d4fcc4911a5628b3c4f0 *DESCRIPTION
+33c7ec497ff8e92bce4c17378f188886 *DESCRIPTION
 a58d174890aa6df8a649bdd71cf044c9 *INDEX
 6e45d70839ca6211e5756307d018db93 *NAMESPACE
 cb5e5d57deacb5edc6f98d5e58a6baad *R/bild.R
@@ -14,12 +14,12 @@ f7c5dd0d55bfe07c233a854f1268c494 *R/zzz.R
 d2f443f7fa3f9c89c473b9a5f5c727ed *data/airpollution.rda
 b1539f945ce4d0150d5efd4c8f26f7a1 *data/locust.rda
 17dc819234e7d3b1f6305dd10f640f81 *data/muscatine.rda
-acb5a0168b186c7b611ef7ee34cc6021 *history.txt
-c995578c370247cb276def042647a6a1 *inst/CITATION
+fb26d4cc0f65ae319614275357cd7e24 *history.txt
+b7a99aedc881c36b3223b21d5d2adfdb *inst/CITATION
 5dee2240a6b0da8d6a3854661c239af6 *man/airpollution.rd
 a75ff2ca570e4bdda8fd90937fb0cb8c *man/bild-class.Rd
-f905937b4cbb6572e182ee3fd1be48d6 *man/bild-package.Rd
-d3cc860ccf75ddd7935802cf3b994c03 *man/bild.Rd
+868b81b480218abe9e6fbd7f0d527359 *man/bild-package.Rd
+6b17d3e1a0d5f089b15f35076ddb8375 *man/bild.Rd
 a44f67002fe5c9db2f8d9b581c60b04e *man/bildControl.Rd
 24cc3c1a8d2f99ceb923cc79d377cf62 *man/bildIntegrate.Rd
 94783baf0e4befddf65ec8e191706f7f *man/getAIC-methods.Rd
