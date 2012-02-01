@@ -5,53 +5,52 @@ year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", desc$Date)
 vers <- paste("Version", desc$Version)
 
 
-citEntry(entry="Article",
-         title = paste("Using Markov chains for marginal modelling of binary",
-                 	"longitudinal data in an exact likelihood approach"),
-         author = personList(as.person("M. Helena Gonçalves"), 
-                             as.person("Adelchi Azzalini")),
-         year         = "2008",
-         journal      = "Metron",
-         volume       = "LXVI",
-       	 number	      = "2",
-         pages        = "157--181",         
-         textVersion = 
-         paste("Gonçalves, M. Helena and Azzalini, A. (2008).", 
-               "Using Markov chains for marginal modelling of binary",
-               "longitudinal data in an exact likelihood approach.",
-               "Metron,  LXVI, n.2, 157-181", sep=" ")
-)
-
-citEntry(entry="manual",
-         title = "bild: a package for BInary Longitudinal Data",
-         author = personList(as.person("M. Helena Gonçalves"),
-			                          as.person("M. Salomé Cabral"), 
-                             as.person("Adelchi Azzalini")),
-         year = year,
-         note = vers,  
-       	 url = "http://CRAN.R-project.org/package=bild",
-	        textVersion = 
-	        paste("Gonçalves, M. H., Cabral, M. S., and Azzalini, A.",
-         	  "(", year, "). bild: a package for BInary Longitudinal Data, ",
-	           vers, ". URL: http://CRAN.R-project.org/package=bild", sep="") 
-)
- 
-
-citEntry(entry = "Article",
-  title        = "The {R} Package {bild} for the Analysis of Binary Longitudinal Data",
-  author       = personList(as.person("M. Helena Gonçalves"),
-                   as.person("M. Salomé Cabral"),
-                   as.person("Adelchi Azzalini")),
-  journal      = "Journal of Statistical Software",
-  year         = "2012",
-  note       = "Forthcoming",
- 
-
-  textVersion  =
-  paste("Gonçalves MH, Cabral MS, Azzalini A (2012).",
-        "The R Package bild for the Analysis of Binary Longitudinal Data.",
-        "Journal of Statistical Software, Forthcoming.")
-
-)
-
-
+citEntry(entry = "Article",
+         title = "Using {M}arkov Chains for Marginal Modelling of Binary Longitudinal Data in an Exact Likelihood Approach",
+         author = personList(as.person("M. Helena Gon\\c{c}alves"), 
+                             as.person("Adelchi Azzalini")),
+         year         = "2008",
+         journal      = "Metron",
+         volume       = "LXVI",
+       	 number	      = "2",
+         pages        = "157--181",         
+         textVersion = 
+         paste("Gonçalves MH, Cabral MS, Azzalini A (2008).", 
+               "Using Markov Chains for Marginal Modelling of Binary",
+               "Longitudinal Data in an Exact Likelihood Approach.",
+               "Metron,  LXVI(2), 157-181")
+)
+
+citEntry(entry = "Article",
+  title        = "The {R} Package {bild} for the Analysis of Binary Longitudinal Data",
+  author       = personList(as.person("M. Helena Gon\\c{c}alves"),
+                   as.person("M. Salom\\'{e} Cabral"),
+                   as.person("Adelchi Azzalini")),
+  journal      = "Journal of Statistical Software",
+  year         = "2012",
+  volume       = "46",
+  number       = "9",
+  pages        = "1--17",
+  url          = "http://www.jstatsoft.org/v46/i09/",
+
+  textVersion  =
+  paste("Gonçalves MH, Cabral MS, Azzalini A (2012).",
+        "The R Package bild for the Analysis of Binary Longitudinal Data.",
+        "Journal of Statistical Software, 46(9), 1-17.",
+	"URL http://www.jstatsoft.org/v46/i09/.")
+)
+
+citEntry(entry = "Manual",
+         title = "{bild}: A Package for {BI}nary {L}ongitudinal {D}ata",
+         author = personList(as.person("M. Helena Gon\\c{c}alves"),
+			     as.person("M. Salom\\'{e} Cabral"), 
+                             as.person("Adelchi Azzalini")),
+         year = year,
+         note = vers,  
+       	 url = "http://CRAN.R-project.org/package=bild",
+	        textVersion = 
+	        paste("Gonçalves MH, Cabral MS, Azzalini A ",
+         	  "(", year, "). bild: A Package for BInary Longitudinal Data, ",
+	           vers, ". URL: http://CRAN.R-project.org/package=bild", sep="") 
+)
+
