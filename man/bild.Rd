@@ -24,8 +24,9 @@ likelihood function.}
   \item{trace}{logical flag: if TRUE, details of the nonlinear optimization are printed. By default the flag is set to FALSE.}
   \item{dependence}{expression stating which \code{dependence} structure should be used in the fit. The default is "ind".
   According to the stochastic model chosen serial dependence and random effects are allowed. 
-  There are five options: "\code{ind}" (independence), "\code{MC1}" (first order Markov Chain), "\code{MC2}" (second order Markov Chain),  
-  "\code{MC1R}" (first order Markov Chain with random intercept) or "\code{MC2R}" (second order Markov Chain with random intercept).}
+  There are six options: "\code{ind}" (independence), "\code{MC1}" (first order Markov Chain), "\code{MC2}" (second order Markov Chain),  
+  "\code{indR}" (independence with random intercept),  "\code{MC1R}" (first order Markov Chain with random intercept) or 
+  "\code{MC2R}" (second order Markov Chain with random intercept).}
   \item{method}{The \code{method} to be used in the optimization process: "\code{BFGS}","\code{CG}", "\code{L-BFGS-B}" and "\code{SANN}". 
   The default is "\code{BFGS}". 
   See \code{\link[stats]{optim}} for details.}
@@ -64,7 +65,9 @@ likelihood function.}
    assuming a normal distribution of mean 0 and variance \eqn{\sigma^2}, 
    parameterized as \eqn{\omega=\log(\sigma^2)}{\omega=log(\sigma^2)}. 
    The combination of serial Markov dependence with a random intercept corresponds here  
-   to the dependence structures \code{MC1R} and \code{MC2R}."
+   to the dependence structures \code{MC1R} and \code{MC2R}.
+   The combination of an independence structure with a random intercept is also allowed   
+   setting the dependence structure to \code{indR}.
     
    Original sources of the above formulation are given by Azzalini (1994), as
    for the first order Markov dependence, and by \enc{Gonçalves}{Goncalves} (2002) and 
@@ -93,8 +96,7 @@ The \code{time} variable should identify the time points that each individual pr
     which identifies the observations to be selected. All observations are included by default.    
 
 
-
-For the models with random intercept \code{MC1R} and \code{MC2R}, 
+For the models with random intercept \code{indR}, \code{MC1R} and \code{MC2R}, 
 \code{bild} compute integrals based on a Fortran-77 subroutine package 
 \code{QUADPACK}. For some data sets, when the dependence structure has 
 a random intercept term, the user could have the need to do a specification 
@@ -102,7 +104,6 @@ of the \code{integrate} argument list changing
 the integration limits in the \code{bildIntegrate} function. 
 The \code{\link{bildIntegrate}} is an auxiliary function for controlling \code{bild} 
 fitting. See the example of \code{\link{locust}} data.   
-
 
 }
 

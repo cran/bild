@@ -153,7 +153,7 @@ if (any(show[1:6])){
 
     								 }#NOVO
 
-		if(depend=="MC1R"||depend=="MC2R"){#Novo1
+		if(depend=="indR"||depend=="MC1R"||depend=="MC2R"){#Novo1
        		
 		if(add.unadjusted==FALSE){
 
@@ -305,7 +305,7 @@ if (any(show[1:6])){
  		
 
 
-                if(depend=="MC1R"||depend=="MC2R"){#Novo1
+                if(depend=="indR"||depend=="MC1R"||depend=="MC2R"){#Novo1
        		
 		if(add.unadjusted==FALSE){
 
@@ -372,7 +372,7 @@ if (any(show[1:6])){
 	if(show[6])  {
  
 if (depend=="ind"||depend=="MC1"||depend=="MC2") 
-       stop("dependence must be MC1R or MC2R")
+       stop("dependence must be indR, MC1R or MC2R")
 
 		plot(x3,c(0,rep(1,n.time-1)), type="n", xlab=xlab2,ylab=ylab,main=" ")
  		mtext(main,side=3,1, cex=0.9)
