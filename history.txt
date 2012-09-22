@@ -1,9 +1,16 @@
 R package 'bild' history file
 -------------------------------
 
+2012-09-22, version 1.1-1: 
+- modification of locust examples in order to be less time consuming.
+
+2012-09-11, version 1.1: 
+- computation of ANOVA;
+- introduced the option of the dependence structure of the model to be 
+  independece with random intercept.
 
 2012-02-01, version 1.0-4: 
-- Modification of CITATION inserting the correct fields of version and number 
+- modification of CITATION inserting the correct fields of version and number 
   of the JSS article related to bild;
 - amended reference of JSS article in files bild.Rd and package-bild.Rd.
 
