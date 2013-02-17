@@ -1,8 +1,8 @@
-d42c2a01a998fca7e0f256cdafd93963 *DESCRIPTION
+6e926dc4b8523e84f1d8d0bd21e86c88 *DESCRIPTION
 a58d174890aa6df8a649bdd71cf044c9 *INDEX
-6e45d70839ca6211e5756307d018db93 *NAMESPACE
+453829d689a7d77f5506ffa0e1c9f7d4 *NAMESPACE
 47688b5defef506447e6d81b39ecff53 *R/anova_bild.R
-7f816fe5dfb2bdd9b04fef03d0da0ef5 *R/bild.R
+78a52928908733af58f9383b0f586faf *R/bild.R
 92279c044e1bd60c8dae58c1d8fd21af *R/bildControl.R
 3ce5804bafdf8cc89d37b102ddeb5cfb *R/bildIntegrate.R
 b12ba465e7f036ffb4309d1d2b36f213 *R/getAIC_bild.R
@@ -11,11 +11,10 @@ e9c98b00b1629300524d05e3b847d2c5 *R/plot_bild_missing.R
 406446ad9b5a9f3a3217d286ebaa92b1 *R/show_bild.R
 7d98520b9955015be426892479917d7a *R/show_summary.bild.R
 e2267a0ad24f06d3cdce235d32875196 *R/summary_bild.R
-f7c5dd0d55bfe07c233a854f1268c494 *R/zzz.R
 d2f443f7fa3f9c89c473b9a5f5c727ed *data/airpollution.rda
 b1539f945ce4d0150d5efd4c8f26f7a1 *data/locust.rda
 17dc819234e7d3b1f6305dd10f640f81 *data/muscatine.rda
-43e454b94355589e83bce24ce85f680f *history.txt
+e30ee495f0005b165b962540c434dd00 *history.txt
 b7a99aedc881c36b3223b21d5d2adfdb *inst/CITATION
 2be0704225dade89b0ef6b7675d3a52a *man/airpollution.rd
 5b94e56e3fe5efe03628cd08cb048761 *man/anova-methods.Rd

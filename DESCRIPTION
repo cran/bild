@@ -1,8 +1,8 @@
 Package: bild
 Type: Package
 Title: bild: a package for BInary Longitudinal Data
-Version: 1.1-1
-Date: 2012-09-22
+Version: 1.1-3
+Date: 2013-02-17
 Author: M. Helena Gonçalves, M. Salomé Cabral and Adelchi Azzalini,
         apart from a set of Fortran-77 subroutines written by R.
         Piessens and E. de Doncker, belonging to the suite "Quadpack"
@@ -18,6 +18,7 @@ License: GPL (>= 2)
 LazyLoad: yes
 LazyData: yes
 Depends: R (>= 2.10.0), methods, stats, graphics, utils
-Packaged: 2012-09-22 08:03:29 UTC; Helena
+Packaged: 2013-02-17 22:52:43 UTC; Helena
+NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2012-09-22 09:05:56
+Date/Publication: 2013-02-18 10:13:04
