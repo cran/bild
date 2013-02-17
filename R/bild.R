@@ -22,7 +22,41 @@ integrate=bildIntegrate())
 # *****************DEFINITION OF INTERNAL FUNCTIONS ******************
 # na.action for binary families
 
-na.discrete.replace <- function(frame,  n.times, ti.repl)
+na.discrete.replace1 <- function(frame,  n.times, ti.repl)
+	{
+	vars <- names(frame)
+	names(vars) <- vars
+	cumti.repl<-cumsum(ti.repl)
+	n.cases<- length(ti.repl)
+	badlines<-NULL
+	bad.ind<-NULL
+	for(j in 1:length(vars)) 
+	{k1<-1
+	for (i in 1:n.cases)
+	{k2<-cumti.repl[i]
+	x <- frame[[j]][k1:k2]
+	pos <- is.na(x)
+	if(any(pos))
+			if(j == 1){distance.between.na <- diff(seq(1, n.times)[!pos])
+					if (any(distance.between.na > 2 ))
+					{badlines<-c(badlines,c(k1:k2))
+					bad.ind<-c(bad.ind,i)
+					x[pos] <- -1}
+				x[pos] <- -1}
+			else stop("NA's on covariates not allowed")
+	frame[[j]][k1:k2]<-x
+	k1<-k2+1
+	} 
+	}
+		if (length(bad.ind)>=1)
+		cat("Warning Message: Condition on NA's not respected:\nresults might be inaccurate\n")
+		return(list(data=frame, badlines=badlines,bad.ind=bad.ind))
+	}
+
+
+
+
+na.discrete.replace2 <- function(frame,  n.times, ti.repl)
 	{
 	vars <- names(frame)
 	names(vars) <- vars
@@ -1068,8 +1102,16 @@ subset.data<-data
 # ********** creation of individual profile according to NA patterns *******************
 
 	data2<-data
-	final.data <- na.discrete.replace(frame=data,  n.times=n.time, ti.repl=ti.repl)
-	
+		
+	if (dependence=="MC2"|| dependence=="MC2R")
+
+	{final.data <- na.discrete.replace2(frame=data,  n.times=n.time, ti.repl=ti.repl)}
+
+	else if (dependence=="ind"|| dependence=="indR"||dependence=="MC1"|| dependence=="MC1R")
+
+	{final.data <- na.discrete.replace1(frame=data,  n.times=n.time, ti.repl=ti.repl)}
+
+
 if (length(final.data$bad.ind)>=1)
 	{data<-final.data$data
 	data<-data[-final.data$badlines,]
