@@ -1,13 +1,14 @@
 \name{bild}
 \alias{bild}
-\title{ fit of parametric models for binary longitudinal data via likelihood method}
-\description{\code{bild} performs the fit of parametric models via likelihood method. 
+\title{ Fit of Parametric Models for Binary Longitudinal Data via Likelihood Method}
+\description{Performs the fit of parametric models via likelihood method. 
 Serial dependence and random intercept are allowed according to the stochastic model chosen. 
 Missing values and unbalanced data are automatically accounted for computing the 
 likelihood function.}
-\usage{bild(formula = formula(data), data, time, id, subSET, aggregate = FALSE, 
-       start = NULL, trace = FALSE, dependence="ind", method = "BFGS", 
-       control = bildControl(), integrate = bildIntegrate())}
+\usage{bild(formula = formula(data), data, time, id, subSET, 
+aggregate = FALSE, start = NULL, trace = FALSE, 
+dependence="ind", method = "BFGS", 
+control = bildControl(), integrate = bildIntegrate())}
 \arguments{ 
   \item{formula}{a description of the model to be fitted of the form response~predictors}
   \item{data}{a \code{data} frame containing the variables in the formula. NA values are allowed. 
@@ -18,7 +19,7 @@ likelihood function.}
    to be present in the \code{data.frame}, otherwise the name of the variable playing the role of \code{id} must be declared by assigning \code{id} here. }
   \item{subSET}{an optional expression indicating the subset of the rows of \code{data} that should be 
     used in the fit. All observations are included by default.}
-  \item{aggregate}{a string that permits the user identify the factor to be used in the \code{\link{plot-methods}}.}
+  \item{aggregate}{a string that permits the user identify the factor to be used in \code{\link{plot-methods}}.}
   \item{start}{a vector of initial values for the nuisance parameters of the likelihood. The dimension of the vector is according 
   to the structure of the dependence model.}
   \item{trace}{logical flag: if TRUE, details of the nonlinear optimization are printed. By default the flag is set to FALSE.}
@@ -27,7 +28,7 @@ likelihood function.}
   There are six options: "\code{ind}" (independence), "\code{MC1}" (first order Markov Chain), "\code{MC2}" (second order Markov Chain),  
   "\code{indR}" (independence with random intercept),  "\code{MC1R}" (first order Markov Chain with random intercept) or 
   "\code{MC2R}" (second order Markov Chain with random intercept).}
-  \item{method}{The \code{method} to be used in the optimization process: "\code{BFGS}","\code{CG}", "\code{L-BFGS-B}" and "\code{SANN}". 
+  \item{method}{The \code{method} used in the optimization process: "\code{BFGS}","\code{CG}", "\code{L-BFGS-B}" and "\code{SANN}". 
   The default is "\code{BFGS}". 
   See \code{\link[stats]{optim}} for details.}
   \item{control}{a list of algorithmic constants for the optimizer \code{optim}. 
@@ -124,32 +125,33 @@ The R Package \code{bild} for the Analysis of Binary Longitudinal Data. \emph{Jo
 
 \seealso{\code{\link{bild-class}}, \code{\link{bildControl}}, \code{\link{bildIntegrate}}, \code{\link[stats]{optim}}}
 
-\examples{\donttest{ 
+\examples{  \donttest{ 
+## Are the examples used in respective dataset files
+
 #####  data= airpollution, dependence="MC2R"
 str(airpollution)
 
-air2r <- bild(wheeze~age+smoking, data=airpollution, trace=TRUE, time="age",
-    aggregate=smoking, dependence="MC2R")
+air2r <- bild(wheeze~age+smoking, data=airpollution, trace=TRUE, 
+    time="age", aggregate=smoking, dependence="MC2R")
 
 summary(air2r)
 getAIC(air2r)
 getLogLik(air2r)
 plot(air2r) 
 
-####  data=muscatine, dependence="MC2R"
+####  data=muscatine, dependence="MC2"
 str(muscatine)
                                             
 # we decompose the time effect in orthogonal components
 muscatine$time1 <- c(-1, 0, 1)
 muscatine$time2 <- c(1, -2, 1)
 
-musc2 <- bild(obese~(time1+time2)*sex, data=muscatine, time="time1", 
-        aggregate=sex, trace=TRUE, dependence="MC2")
+musc2 <- bild(obese~(time1+time2)*sex, data=muscatine, 
+    time="time1", aggregate=sex, trace=TRUE, dependence="MC2")
         
 summary(musc2)
 getAIC(musc2)
 getLogLik(musc2)
-
 }}
 
 \keyword{function}

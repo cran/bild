@@ -1,9 +1,9 @@
 \name{bild-package}
 \alias{bild-package}
 \docType{package}
-\title{bild: a package for BInary Longitudinal Data}
+\title{BInary Longitudinal Data}
 \description{
-\code{bild} performs logistic regression for binary longitudinal
+Performs logistic regression for binary longitudinal
   data, allowing for serial dependence among observations from a given
   individual and a random intercept term. Estimation is via maximization
   of the exact likelihood of a suitably defined model. Missing values and 

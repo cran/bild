@@ -1,5 +1,13 @@
-R package 'bild' history file
+R package 'bild' News
 -------------------------------
+
+2015-04-14, version 1.1-5: 
+- modification of title in DESCRIPTION;
+- introduced a NEWS file.
+- amended PDF manual.
+
+2015-03-26, version 1.1-4: 
+- using 'meta' variable when reading the CITATION file.
 
 2013-01-17, version 1.1-3: 
 - useDynLib directive introduced in the NAMESPACE.

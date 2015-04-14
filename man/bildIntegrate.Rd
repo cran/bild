@@ -2,8 +2,8 @@
 \alias{bildIntegrate}
 \title{ Auxiliary for Controlling "bild" Fitting}
 \description{Auxiliary function as user interface for \code{bild} fitting }
-\usage{bildIntegrate(li=-4,ls=4, epsabs=.Machine$double.eps^.25,
-       epsrel=.Machine$double.eps^.25,limit=100,key=6,lig=-4,lsg=4) }
+\usage{bildIntegrate(li=-4,ls=4, epsabs=.Machine$double.eps^.25, 
+epsrel=.Machine$double.eps^.25,limit=100,key=6,lig=-4,lsg=4) }
 \arguments{ 
   \item{li}{lower limit of integration for the log-likelihood.}                                                                 
   \item{ls}{upper limit of integration for the log-likelihood.}                                                                 
@@ -48,8 +48,8 @@ likelihood and for the gradient to small values
 than the default ones, see the example of \code{\link{locust}} data. 
  
 If fitting procedure is complete but when computing the information matrix 
-some NaNs are produced, the change of the default values for the gradient integration 
-limits (\code{lig} and \code{lsg}) in \code{bildIntegrate} function might solve this problem.
+some NaNs are produced, the change in \code{bildIntegrate} function of the default values 
+for the gradient integration limits (\code{lig} and \code{lsg}) might solve this problem.
   }    
 
 \value{A list with the arguments as components.}    
@@ -57,11 +57,13 @@ limits (\code{lig} and \code{lsg}) in \code{bildIntegrate} function might solve 
 \seealso{\code{\link{bild-class}}}
 
 \examples{ \donttest{ 
+## It takes a very long time to run
+
 ####  data=locust, dependence="MC2R"                                                   
 str(locust)                                                                            
                                                                                        
 Integ <- bildIntegrate(li=-2.5,ls=2.5, lig=-2.5, lsg=2.5)                              
-locust2r_feed1 <- bild(move~(time+I(time^2))*sex, data=locust, start=NULL,             
+locust2r_feed1 <- bild(move~(time+I(time^2))*sex, data=locust,              
     trace=TRUE, subSET=feed=="1", aggregate=sex, dependence="MC2R",                    
     integrate=Integ)                                                                   
                                                                                        

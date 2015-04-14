@@ -2,7 +2,7 @@
 \docType{methods}
 \alias{plot-methods}
 \alias{plot,bild,missing-method}
-\title{Methods for function plot in package "bild"}
+\title{Methods for Function plot in Package "bild"}
 \description{Six plots (selectable by \code{which}) are currently available: a plot of residuals against fitted values (\code{which}=1), 
 a plot of standardized residuals against time (\code{which}=2), a plot of the autocorrelation function of the residuals (\code{which}=3),  
 a plot of the partial autocorrelation function of the residuals (\code{which}=4), a plot for the fitted model (\code{which}=5) 
@@ -10,10 +10,11 @@ and a plot for the individual mean profile (\code{which}=6). By default, the fir
 }
 \usage{
 \S4method{plot}{bild,missing}(x,which=c(1:5),ylab=NULL,main=NULL, 
-        ask=prod(par("mfcol"))<length(which)&&dev.interactive(), 
-        subSET,add.unadjusted=FALSE,ident=FALSE, 
-        caption=c("Residuals vs Fitted", "Residuals vs Time", "ACF residuals", 
-        "PACF residuals", "Individual mean profiles"), cex.caption=1)}
+    ask=prod(par("mfcol"))<length(which)&&dev.interactive(), 
+    subSET,add.unadjusted=FALSE,ident=FALSE, 
+    caption=c("Residuals vs Fitted", "Residuals vs Time", 
+    "ACF residuals", "PACF residuals", 
+    "Individual mean profiles"), cex.caption=1)}
 \arguments{ 
   \item{x}{an object of class \code{\link{bild}}.}
   \item{which}{if a subset of the plots is required, specify a subset of the numbers 1:6.}
@@ -44,12 +45,13 @@ and a plot for the individual mean profile (\code{which}=6). By default, the fir
     \item{\code{signature(x="bild", y="missing")}:}{Plot diagnostics for \code{\link{bild}} object.}
 }}
 \examples{\donttest{ 
+## It takes a very long time to run
 str(locust)
 
 ####  dependence="MC2R"
 Integ <- bildIntegrate(li=-2.5,ls=2.5, lig=-2.5, lsg=2.5)   
 locust2r_feed1 <- bild(move~(time+I(time^2))*sex, data=locust, 
-    start=NULL, subSET=feed=="1", aggregate=sex, dependence="MC2R",  
+    subSET=feed=="1", aggregate=sex, dependence="MC2R",  
     integrate=Integ)
     
 
@@ -59,11 +61,12 @@ summary(locust2r_feed1)
 plot(locust2r_feed1, which=5, ylab="probability of locomoting",
      add.unadjusted=TRUE)
 
-plot(locust2r_feed1, which=6, subSET=sex=="1", main="sex==1 & Feed=1", 
-    ident=TRUE)
+plot(locust2r_feed1, which=6, subSET=sex=="1", 
+    main="sex==1 & Feed=1", ident=TRUE)
 
-locust2r <- bild(move~(time+I(time^2))*feed,data=locust, start=NULL, 
-    trace=TRUE, aggregate=feed, dependence="MC2R", integrate=Integ)
+locust2r <- bild(move~(time+I(time^2))*feed,data=locust, 
+    trace=TRUE, aggregate=feed, dependence="MC2R", 
+    integrate=Integ)
 
 par(mfrow=c(2,2))
 plot(locust2r, which=1)

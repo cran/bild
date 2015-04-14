@@ -2,8 +2,8 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{summary.bild-class}
-\title{Class "summary.bild", summary of "bild" objects}
-\description{Extract of \code{\link{bild}} object}
+\title{Class "summary.bild", Summary of "bild" Objects}
+\description{Extract of \code{\link{bild}} object.}
 \section{Objects from the Class}{Objects can be created by calls of the form \code{new("summary.bild", ...)}, 
 but most often by invoking \code{summary} on an \code{bild} object. They contain values meant for printing by \code{show}.}
 \section{Slots}{

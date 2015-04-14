@@ -2,7 +2,7 @@
 \docType{methods}
 \alias{summary-methods}
 \alias{summary,bild-method}
-\title{Methods for Function summary in package "bild"}
+\title{Methods for Function summary in Package "bild"}
 \description{ Summarize objects}
 \usage{
 \S4method{summary}{bild}(object, cov=FALSE, cor=FALSE)}
@@ -23,7 +23,7 @@ the estimate of the random effect (\code{omega}) will also appear where \eqn{\om
 \section{Methods}{
 \describe{
 \item{\code{signature(object = "ANY")}:}{Generic function.}
-\item{\code{signature(object = "bild")}:}{Generate a summary as an object of class 
+\item{\code{signature(object = "bild")}:}{Prints a summary as an object of class 
 \code{\link[=summary.bild-class]{summary.bild}}, 
 containing information about the matched call to \code{bild}, the number of profiles in the data, 
 the number of profiles used in the fit, the log-likelihood, the AIC,

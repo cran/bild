@@ -2,7 +2,7 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{bild-class}
-\title{Class "bild" for results of a maximum likelihood estimation}
+\title{Class "bild" for Results of a Maximum Likelihood Estimation}
 \description{This class encapsulates results of a maximum likelihood procedure.}
 \section{Objects from the Class}{Objects can be created by calls of the form \code{new("bild", ...)}, 
 but most often as the result of a call to \code{\link{bild}}.}
