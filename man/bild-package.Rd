@@ -1,7 +1,7 @@
 \name{bild-package}
 \alias{bild-package}
 \docType{package}
-\title{BInary Longitudinal Data}
+\title{A Package for BInary Longitudinal Data}
 \description{
 Performs logistic regression for binary longitudinal
   data, allowing for serial dependence among observations from a given
@@ -11,17 +11,16 @@ Performs logistic regression for binary longitudinal
 }
 \details{This package contains functions to perform the fit of parametric models via likelihood method for binary
 longitudinal data using "S4" classes and methods as implemented in the \code{methods} package.}
-\author{M. Helena \enc{Gonçalves}{Goncalves}, M. \enc{Salomé}{Salome} Cabral and Adelchi Azzalini}
+\author{M. Helena Goncalves, M.Salome Cabral and Adelchi Azzalini}
 \references{Azzalini, A. (1994). Logistic regression for autocorrelated data with application to repeated measures. 
 \emph{Biometrika}, 81, 767-775. Amendment: (1997) vol. 84, 989.
 
-\enc{Gonçalves}{Goncalves}, M. Helena (2002) \emph{ Likelihood methods for discrete longitudinal data}. PhD thesis, 
-Faculty of Sciences, University of Lisbon.
+Goncalves, M. Helena (2002) \emph{ Likelihood methods for discrete longitudinal data}. PhD thesis, Faculty of Sciences, University of Lisbon.
   
-\enc{Gonçalves}{Goncalves}, M. Helena and Azzalini, A. (2008). Using Markov chains for marginal modelling of binary longitudinal data 
+Goncalves, M. Helena and Azzalini, A. (2008). Using Markov chains for marginal modelling of binary longitudinal data 
 in an exact likelihood approach. \emph{Metron}, vol LXVI, 2, 157-181.
   
-\enc{Gonçalves}{Goncalves} MH, Cabral MS and Azzalini A (2012). 
+Goncalves MH, Cabral MS and Azzalini A (2012). 
 The R Package \code{bild} for the Analysis of Binary Longitudinal Data. \emph{Journal of Statistical Software}, 46(9), 1-17.}
 
 \section{Acknowledgments}{We would like to thank the CRAN team for help in the fine tuning of the Fortran code.}

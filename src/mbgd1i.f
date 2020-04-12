@@ -9,13 +9,14 @@ C    loglik.odds.gradient(param,dataset,print.level=0)
      *P0(2,2), P1(2,2), P2(2,2),
      *dth(3),db(3,10),der(10)
 
-      double precision lpsi
-      integer y1,k,k1,k2,i,i0,i1,i2,j,j1,npar,m,n0,n,mpar
+      double precision lpsi1
+      integer y1,k,k1,k2,i,i0,i1,j,npar,m,n0,n,mpar
 
-      COMMON/param/x1,theta1,work1,
-     *y1,beta1,bt1,m,mpar,omega1,lpsi
-      COMMON/grad/ dbeta,dbeta1,der,db
-      psi = dexp(lpsi)
+      COMMON/param1/x1,theta1,work1,
+     *y1,beta1,bt1,m,mpar,omega1,lpsi1
+      COMMON/grad1/ dbeta,dbeta1,der,db
+
+      psi = dexp(lpsi1)
       psi1 = psi
       ps1 = psi1-1
       call mati(x1,beta1,work1,5000,10,1,m,mpar+1)

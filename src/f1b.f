@@ -13,9 +13,9 @@ CCCCC
      *work1(5000),y1(5000),prob(5000),beta1(10),bt1(10),
      *gbt(10),dbeta(10),dbeta1(10),der(10),db(3,10)
 
-      COMMON/param/x1,theta1,work1,
+      COMMON/param1/x1,theta1,work1,
      *y1,beta1,bt1,m,mpar,omega1,lpsi1
-      COMMON/grad/ dbeta,dbeta1,der,db
+      COMMON/grad1/ dbeta,dbeta1,der,db
 
       beta1(1) = v +bt1(1)
 

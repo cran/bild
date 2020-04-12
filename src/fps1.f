@@ -4,11 +4,11 @@ C dependence model with random effects
 C dimension of x and vectors assume the maximum values
 CCCCC
 
-      DOUBLE PRECISION FUNCTION fps1(v,i)
+      DOUBLE PRECISION FUNCTION fps1(v)
       DOUBLE PRECISION logL,prob,beta1,bt1,lpsi1,x1,
      *theta1,work1,omega1,v,d2,gbt,glps1,glps2,
      *dbeta,dbeta1,dbeta2,der,db,db1,db2
-      INTEGER m, mpar, y1,i
+      INTEGER m, mpar, y1
       DIMENSION x1(4500,10),theta1(4500),
      *work1(4500),y1(4500),prob(4500),lpsi1(2),beta1(10),
      *bt1(10),dbeta(10),dbeta1(10),dbeta2(10),

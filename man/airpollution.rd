@@ -42,6 +42,7 @@ getLogLik(air2)
 plot(air2)
 
 #####  dependence="MC2R"
+\donttest{ 
 air2r <- bild(wheeze~age+smoking, data=airpollution, time="age",
             aggregate=smoking, dependence="MC2R")
 
@@ -51,6 +52,7 @@ getLogLik(air2r)
 plot(air2r) 
 
 plot(air2r, which=6, subSET=smoking=="0", main="smoking==0", ident=TRUE) 
+}
 }
 \keyword{datasets}
 

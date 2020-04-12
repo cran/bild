@@ -1,10 +1,9 @@
 
 setClass("bild", representation(coefficients = "matrix", se = "matrix", covariance = "matrix", correlation="matrix", 
 		log.likelihood="numeric", message ="integer",n.cases="numeric", ni.cases="numeric", aic="numeric", residuals="numeric", 
-		s.residuals="numeric",ind.probability="numeric", prob.matrix="matrix", Fitted="numeric", 
+		s.residuals="numeric",ind.probability="numeric", prob.matrix="matrix", Fitted="numeric", bi.estimate="matrix", 
 		Fitted.av="numeric", Time="numeric", model.matrix= "matrix", y.matrix="matrix",
 		subset.data="data.frame", y.av="numeric", f.value="factor",call="language"))
-
 
 setMethod(f="anova", signature(object = "bild"), 
 function(object,...,test=TRUE,correct=FALSE)

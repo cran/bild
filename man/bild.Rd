@@ -1,6 +1,6 @@
 \name{bild}
 \alias{bild}
-\title{ Fit of Parametric Models for Binary Longitudinal Data via Likelihood Method}
+\title{Fit of Parametric Models for Binary Longitudinal Data via Likelihood Method}
 \description{Performs the fit of parametric models via likelihood method. 
 Serial dependence and random intercept are allowed according to the stochastic model chosen. 
 Missing values and unbalanced data are automatically accounted for computing the 
@@ -71,8 +71,8 @@ control = bildControl(), integrate = bildIntegrate())}
    setting the dependence structure to \code{indR}.
     
    Original sources of the above formulation are given by Azzalini (1994), as
-   for the first order Markov dependence, and by \enc{Gonçalves}{Goncalves} (2002) and 
-   \enc{Gonçalves}{Goncalves} and Azzalini (2008) for the its extensions.
+   for the first order Markov dependence, and by Goncalves (2002) and 
+   Goncalves and Azzalini (2008) for the its extensions.
    }
 \details{
 \code{data} are contained in a \code{data.frame}. Each element of the \code{data} argument must be identifiable by a name. 
@@ -112,14 +112,12 @@ fitting. See the example of \code{\link{locust}} data.
 \references{Azzalini, A. (1994). Logistic regression for autocorrelated data with application to repeated measures.  
 \emph{Biometrika}, 81, 767-775. Amendment: (1997) vol. 84, 989.
 
-\enc{Gonçalves}{Goncalves}, M. Helena (2002). \emph{ Likelihood methods for discrete longitudinal data}. PhD thesis, 
-Faculty of Sciences, University of Lisbon.
+\enc{Gonçalves}{Goncalves}, M. Helena (2002). \emph{ Likelihood methods for discrete longitudinal data}. PhD thesis, Faculty of Sciences, University of Lisbon.
   
 \enc{Gonçalves}{Goncalves}, M. Helena and Azzalini, A. (2008). Using Markov chains for marginal modelling of binary longitudinal data 
 in an exact likelihood approach. \emph{Metron}, vol LXVI, 2, 157-181.
   
-\enc{Gonçalves}{Goncalves} MH, Cabral MS and Azzalini A (2012). 
-The R Package \code{bild} for the Analysis of Binary Longitudinal Data. \emph{Journal of Statistical Software}, 46(9), 1-17.}
+\enc{Gonçalves}{Goncalves}, M. Helena and Cabral, M. \enc{Salomé}{Salome} and Azzalini,  Adelchi (2012). The R Package \code{bild} for the Analysis of Binary Longitudinal Data. \emph{Journal of Statistical Software}, 46(9), 1-17.}
   
 \author{M. Helena \enc{Gonçalves}{Goncalves}, M. \enc{Salomé}{Salome} Cabral and Adelchi Azzalini}
 

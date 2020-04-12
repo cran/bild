@@ -1,7 +1,12 @@
 R package 'bild' News
 -------------------------------
 
-2015-04-14, version 1.1-5: 
+2020-04-09, version 1.2-0: 
+- more functions and methods available for objects of class cold.
+- improvements in R code in the random intercept model.
+- amended fortran code.
+
+2015-04-07, version 1.1-5: 
 - modification of title in DESCRIPTION;
 - introduced a NEWS file.
 - amended PDF manual.

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <float.h>
 #include <math.h>
-double d1mach_(long *i)
+double d1mach_(int *i)
 {
        switch(*i){
          case 1: return DBL_MIN;

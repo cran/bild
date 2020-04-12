@@ -14,7 +14,7 @@ CCCCC
      *beta1(10),bt1(10)
 
       COMMON/param/x1,theta1,work1,
-     *y1,lpsi1,beta1,bt1,m,mpar,omega1,logL
+     *y1,lpsi1,beta1,bt1,m,mpar,omega1
       beta1(1) = v +bt1(1)
 
       CALL mlik2i(logL,prob,mpar,m)

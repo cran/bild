@@ -6,9 +6,9 @@ C# order dependence model
       dimension x(n,npar-2),beta(npar-2),work(n),theta(n),pij(n),
      +lpsi(2),tpr(2),tpr1(4),y(n),psi(2),P0(2,2),P1(2,2),P2(2,2),
      +P3(4,4), P4(4,4), P5(4,4), P6(4,4),
-     +Pc(4,1),Pr(2,1),Pr0(4,1),Pr1(2,1),Paux(2,2),Pres(2,2)
+     +Pc(4,1),Pr(2,1),Pr0(4,1),Pr1(2,1)
       double precision logL,lpsi,pij
-      integer y,i0,i1,i2,npar,n,n0,k,iaux, iaux1, iaux2
+      integer y,i0,i1,i2,npar,n,n0,k
       psi(1) = dexp(lpsi(1))
       psi(2) = dexp(lpsi(2))
       psi1 = psi(1)
@@ -81,7 +81,7 @@ C    (one or more intermediate missing datum)
         th2 = theta(i0)
       call mcpij(th,th1,th2,psi1,psi2,tpr1)
         p=tpr1(y(i0)+2*y(i1)+1)
-	pij(i2)=p
+        pij(i2)=p
         logL = logL+y(i2)*dlog(p/(1-p))+dlog(1-p)
         i0=i1
         i1=i2
@@ -106,7 +106,7 @@ C    (one intermediate missing datum between i0 and i1)
         Pr(2,1)=tpr1(2*y(i1)+2)
         call matp(P0,Pr,Pr1,2,2,1)
         p=Pr1(y(i0)+1,1)
-	pij(i2)=p
+        pij(i2)=p
         logL = logL+y(i2)*dlog(p/(1-p))+dlog(1-p)
         i0=i1
         i1=i2
@@ -159,7 +159,7 @@ C    (one intermediate missing datum between i1 and i2(last value))
         Pc(4,1)=1
         call matp(P4,Pc,Pr0,4,4,1)
         p=Pr0(2*y(i0)+y(i1)+1,1)
-	pij(i2)=p
+        pij(i2)=p
         logL = logL+y(i2)*dlog(p/(1-p))+dlog(1-p)
         i0=i1
         i1=i2

@@ -18,6 +18,7 @@
       COMMON/param/x1,theta1,work1,
      *y1,lpsi1,beta1,bt1,m,mpar,omega1
 
+
       DATA sqr2pi/2.506628274631D0/
 
       do 10 k=1,(npar-2)

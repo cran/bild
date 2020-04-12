@@ -10,11 +10,11 @@ C    loglik.odds.gradient(param,dataset,print.level=0)
      *der(10),db(3,10),db1(4,10),db2(5,10),gbeta(10),
      *psi(2),tpr(2),tpr1(4),der1(5),der2(5),
      *P0(2,2), P1(2,2), P2(2,2),P4(4,4), P5(4,4), P6(4,4),
-     *Pc(4,1),Pr(2,1),Pr0(4,1),Pr1(2,1),Paux(2,2),Pres(2,2),
+     *Pc(4,1),Pr(2,1),Pr0(4,1),Pr1(2,1),
      *dth(3),dth1(4),dth2(5),P7(4,4), P8(4,4)
 
       double precision lpsi1
-      integer y1,k,k1,k2,i,i0,i1,i2,j,j1,j2,npar,n0,iaux,n,
+      integer y1,k,k1,k2,i,i0,i1,i2,j,j1,j2,npar,n0,n,
      *m,mpar
 
       COMMON/param/x1,theta1,work1,

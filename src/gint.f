@@ -5,7 +5,7 @@
 
       implicit double precision (a-h,o-z)
       External f2b,fps1,fps2,f2var
-      DOUBLE PRECISION logL,lpsi,lpsi1,li,ls
+      DOUBLE PRECISION lpsi,lpsi1,li,ls
       INTEGER n,npar,y2,key,limit,neval,ier,iord,last,
      *m,mpar,y1,k,k1,k2,iaux,kaux
 

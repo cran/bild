@@ -7,12 +7,10 @@ C# order dependence model
      *work1(4500),y1(4500),lpsi1(2),
      *beta1(10),bt1(10),pij(n),psi(2),tpr(2),tpr1(4),
      *P0(2,2), P1(2,2), P2(2,2),P3(4,4), P4(4,4), P5(4,4), 
-     *P6(4,4),Pc(4,1),Pr(2,1),Pr0(4,1),Pr1(2,1),Paux(2,2),
-     *Pres(2,2)
+     *P6(4,4),Pc(4,1),Pr(2,1),Pr0(4,1),Pr1(2,1)
 
-      double precision logL,lpsi,lpsi1,pij
-      integer y1,i0,i1,i2,npar,n,n0,k,iaux, iaux1, iaux2,
-     *m,mpar
+      double precision logL,lpsi1,pij
+      integer y1,i0,i1,i2,npar,n,n0,k,m,mpar
 
       COMMON/param/x1,theta1,work1,
      *y1,lpsi1,beta1,bt1,m,mpar,omega1
@@ -118,7 +116,7 @@ C    (one intermediate missing datum between i0 and i1)
         Pr(2,1)=tpr1(2*y1(i1)+2)
         call matp(P0,Pr,Pr1,2,2,1)
         p=Pr1(y1(i0)+1,1)
-	pij(i2)=p
+        pij(i2)=p
         logL = logL+y1(i2)*dlog(p/(1-p))+dlog(1-p)
         i0=i1
         i1=i2
@@ -146,7 +144,7 @@ C    (one or more intermediate missing datum between i1 and i2)
         call mat4 (tpr1(1),tpr1(3),tpr1(2),tpr1(4),P5)
         call matp(P4,P5,P6,4,4,4)
         pstar=P6(2*y1(i0)+y1(i1)+1,2*y1(i2)+y1(i3)+1)
-	pij(i2)=pstar
+        pij(i2)=pstar
         logL = logL+dlog(pstar)
         i0=i2
         i1=i3
@@ -171,7 +169,7 @@ C    (one intermediate missing datum between i1 and i2(last value))
         Pc(4,1)=1
         call matp(P4,Pc,Pr0,4,4,1)
         p=Pr0(2*y1(i0)+y1(i1)+1,1)
-	pij(i2)=p
+        pij(i2)=p
         logL = logL+y1(i2)*dlog(p/(1-p))+dlog(1-p)
         i0=i1
         i1=i2

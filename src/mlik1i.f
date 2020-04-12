@@ -6,13 +6,13 @@ C# order dependence model with random effects
       DIMENSION x1(5000,10),theta1(5000),
      *work1(5000),y1(5000),beta1(10),bt1(10),
      *pij(n),tpr(2),P0(2,2), P1(2,2), P2(2,2)
-      double precision logL,lpsi,pij
+      double precision logL,lpsi1,pij
       integer y1,i0,i1,npar,n,n0,k,m,mpar
 
-      COMMON/param/x1,theta1,work1,
-     *y1,beta1,bt1,m,mpar,omega1,lpsi
+      COMMON/param1/x1,theta1,work1,
+     *y1,beta1,bt1,m,mpar,omega1,lpsi1
 
-      psi = dexp(lpsi)
+      psi = dexp(lpsi1)
       psi1 = psi
       ps1 = psi1-1
       call mati(x1,beta1,work1,5000,10,1,n,npar+1)

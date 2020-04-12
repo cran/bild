@@ -5,7 +5,7 @@
 
       DOUBLE PRECISION logL,lpsi,lpsi1,li,ls,sigma,sqr2pi
       INTEGER n,npar,y2,key,limit,neval,ier,iord,last,
-     *m,mpar,y1,k,k1,k2,iaux
+     *m,mpar,y1,k,k2
 
       DIMENSION x1(5000,10),theta1(5000),
      *work1(5000),y1(5000),beta1(10),bt1(10),
@@ -14,7 +14,7 @@
      *alist(limit),blist(limit),elist(limit),iord(limit),
      *rlist(limit)
 
-      COMMON/param/x1,theta1,work1,
+      COMMON/param1/x1,theta1,work1,
      *y1,beta1,bt1,m,mpar,omega1,lpsi1
 
       DATA sqr2pi/2.506628274631D0/

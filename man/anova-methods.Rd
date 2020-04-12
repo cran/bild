@@ -37,21 +37,18 @@ ratio tests under nonstandard conditions. \emph{Journal of the American Statisti
 \examples{
 #####  data = locust
 
-loc1 <- bild(move~(time+I(time^2))*feed*sex, data=locust, 
-    aggregate=feed, dependence="MC1")
+loc1 <- bild(move~(time+I(time^2))*feed*sex, data=locust, dependence="MC1")
 
-loc2 <- bild(move~(time+I(time^2))*feed, data=locust, 
-    aggregate=feed, dependence="MC1")
+loc2 <- bild(move~(time+I(time^2))*feed, data=locust, dependence="MC1")
 
 anova(loc1,loc2)
 
-loc3 <- bild(move~(time+I(time^2))*feed, data=locust, 
-    aggregate=feed, dependence="MC2")
+loc3 <- bild(move~(time+I(time^2))*feed, data=locust, dependence="MC2")
 
 anova(loc3,loc2)
 
 #####  data= muscatine
-
+\donttest{ 
 # we decompose the time effect in orthogonal components
 muscatine$time1 <- c(-1, 0, 1)
 muscatine$time2 <- c(1, -2, 1)
@@ -64,6 +61,6 @@ musc1r <- bild(obese~time1, data=muscatine, time="time1",
 
 anova(musc1, musc1r, correct=TRUE)
 }
-
+}
 \keyword{methods}
 

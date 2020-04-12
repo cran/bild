@@ -40,6 +40,8 @@ musc2 <- bild(obese~(time1+time2)*sex, data=muscatine,
 summary(musc2)
 getAIC(musc2)
 getLogLik(musc2)
+fitted(musc2)
+
 }
 \keyword{datasets}
 

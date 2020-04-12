@@ -8,11 +8,11 @@ C    loglik.odds.gradient(param,dataset,print.level=0)
      *tpr1(4),der1(5),der2(5),psi(2),gbeta(npar-2),dbeta(npar-2),
      *dbeta1(npar-2),dbeta2(npar-2),y(n),lpsi(2),
      *P0(2,2), P1(2,2), P2(2,2),P4(4,4), P5(4,4), P6(4,4),
-     *Pc(4,1),Pr(2,1),Pr0(4,1),Pr1(2,1),Paux(2,2),Pres(2,2),
+     *Pc(4,1),Pr(2,1),Pr0(4,1),Pr1(2,1),
      *db(3,npar-2),db1(4,npar-2),db2(5,npar-2),der(npar-2),
      *P7(4,4), P8(4,4),dth(3),dth1(4),dth2(5)
       double precision lpsi
-      integer y,k,k1,k2,i,i0,i1,i2,j,j1,j2,npar,m,n0,iaux,n
+      integer y,k,k1,k2,i,i0,i1,i2,j,j1,j2,npar,n0,n
 
       psi(1) = dexp(lpsi(1))
       psi(2) = dexp(lpsi(2))
@@ -229,8 +229,8 @@ C    (exactly one intermediate missing datum between i0 and i1)
       else if (i2.ne.(i1+1).and.i2.ne.n0) then
 C    (exactly one intermediate missing datum between i1 and i2)
         th02 = theta(i0+2)
-	th01 = theta(i0+1)        
-	th0 = theta(i0)
+	      th01 = theta(i0+1)        
+	      th0 = theta(i0)
         th12 = theta(i1+2)
         th11 = theta(i1+1)
         th22 = theta(i1)

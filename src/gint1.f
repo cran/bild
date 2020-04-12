@@ -6,7 +6,7 @@
       External f1b,fpsi,f1var
       DOUBLE PRECISION lpsi,lpsi1,li,ls
       INTEGER n,npar,y2,key,limit,neval,ier,iord,last,
-     *m,mpar,y1,k,k1,k2,iaux,kaux
+     *m,mpar,y1,k,k2,iaux,kaux
 
       DIMENSION x1(5000,10),theta1(5000),
      *work1(5000),y1(5000),beta1(10),
@@ -18,9 +18,9 @@
      *alist(limit),blist(limit),elist(limit),iord(limit),
      *rlist(limit)
 
-      COMMON/param/x1,theta1,work1,
+      COMMON/param1/x1,theta1,work1,
      *y1,beta1,bt1,m,mpar,omega1,lpsi1
-      COMMON/grad/ dbeta,dbeta1,der,db
+      COMMON/grad1/ dbeta,dbeta1,der,db
 
       do 10 k=1,(npar-1)
       bt1(k)=bt2(k)

@@ -23,6 +23,7 @@ but most often as the result of a call to \code{\link{bild}}.}
     \item{\code{ind.probability}:}{Object of class \code{"numeric"}. The transitions probabilities.}
     \item{\code{prob.matrix}:}{Object of class \code{"matrix"}. The matrix of transitions probabilities.}
     \item{\code{Fitted}:}{Object of class \code{"numeric"}. The fitted values for the estimated parameters.}
+    \item{\code{bi.estimate}:}{Object of class \code{"matrix"}. The estimated values for the individual random effects.}
     \item{\code{Fitted.av}:}{Object of class \code{"numeric"}. }
     \item{\code{Time}:}{Object of class \code{"numeric"}. Vector of time points.}
     \item{\code{model.matrix}:}{Object of class \code{"matrix"}. The model matrix.}
@@ -35,13 +36,21 @@ but most often as the result of a call to \code{\link{bild}}.}
 }
 \section{Methods}{
   \describe{
-    \item{anova}{\code{signature(object="bild")}: Display anova table.}
-    \item{plot}{\code{signature(x="bild", y="missing")}: Plots six type of plots.}
-    \item{show}{\code{signature(object="bild")}: Display object briefly.}
-    \item{summary}{\code{signature(object="bild")}: Generate object summary.}
-    \item{getAIC}{\code{signature(object="bild")}: Returns a numeric value corresponding to the AIC of the fitted model.}
-    \item{getLogLik}{\code{signature(object="bild")}: Returns a numeric value corresponding to the log-Likelihood of the fitted model.}
-	 }
+  \item{anova}{\code{signature(object="bild")}: Display anova table.}
+  \item{plot}{\code{signature(x="bild", y="missing")}: Plots six type of plots.}
+  \item{show}{\code{signature(object="bild")}: Display object briefly.}
+  \item{summary}{\code{signature(object="bild")}: Generate object summary.}
+  \item{getAIC}{\code{signature(object="bild")}: Returns a numeric value corresponding to the AIC of the fitted model.}
+  \item{getLogLik}{\code{signature(object="bild")}: Returns a numeric value corresponding to the log-Likelihood of the fitted model.}
+  \item{fitted}{\code{signature(object="bild")}: The fitted values of a fitted model.}
+  \item{fixeff}{\code{signature(object="bild")}: 
+    The values corresponding to the fixed effects of a fitted model.} 
+  \item{getcoef}{\code{signature(object="bild")}: The values corresponding to the coefficient estimates of the fitted model.}
+  \item{getvcov}{\code{signature(object="bild")}: The variance-covariance matrix of the fitted model.}
+  \item{model.mat}{\code{signature(object="bild")}: The fixed effects model matrix of the fitted model.}
+	 \item{randeff}{\code{signature(object="bild")}: A data frame corresponding to the conditional random effects of the fitted model.}
+   \item{vareff}{\code{signature(object="bild")}: Numeric value corresponding to the estimated random effect variance of the fitted model.}
+ }
 }
 \keyword{class}
 
