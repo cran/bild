@@ -24,7 +24,9 @@ logL.bin0.aux<- function(parameters, X, data, trace)
   n.cases<- length(ti.repl)
   y<-data[[2]]
   prob<-as.double(rep(0,length(y)))
+  z_lik<-as.double(rep(0,length(n.cases)))
   counts<-data[[3]]
+  print(c("counts", counts))
   logL<-as.double(0)
   k1<-1
   for (i in 1:n.cases)
@@ -32,6 +34,7 @@ logL.bin0.aux<- function(parameters, X, data, trace)
     k2<-cumti.repl[i]
     z<- loglik1(param=parameters,X=X[k1:k2,],y=y[k1:k2],trace=trace)
     logL<-logL+counts[i]*z$loglik
+    z_lik[i]<-counts[i]*z$loglik
     prob[k1:k2]<-z$pij
     k1<-k2+1
   }

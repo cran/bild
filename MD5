@@ -1,6 +1,6 @@
-ad9270a640ed53be45c3db2083b3c9da *DESCRIPTION
+cc52abedbe1a6387bba66db1aa612559 *DESCRIPTION
 107f161608c86379733feffb8e48c060 *NAMESPACE
-902eab06e71b478df4a25518dcec824c *NEWS
+dd7277aed2888fa1d2b9fbf4973c1810 *NEWS
 fe625e89b999947f6bd9d5537d038088 *R/anova_bild.R
 70d2ff3bced3fc94c7bd5906570b9327 *R/bild.R
 92279c044e1bd60c8dae58c1d8fd21af *R/bildControl.R
@@ -20,7 +20,7 @@ afa32c7f46b5bf32248a4c4c5a222994 *R/gradlogL_bin0I.R
 359e1e52a508f8583c16806c5bf22c52 *R/logL_bin0.R
 288376f1e2d991d4dc7223e02f1f8a9f *R/logL_bin0I.R
 9957b9a64c3729e9f07770c6b149e521 *R/logL_bin0I_aux.R
-7587e1916615a72098c67bfa710385f0 *R/logL_bin0_aux.R
+dee30a0b10233d4547cefe2c7cac69f3 *R/logL_bin0_aux.R
 89bca5aa9ca3b780e5a12241a8f3293c *R/logL_bin1.R
 6a7b987a5f6514770814329f511f04ea *R/logL_bin1I.R
 163b8b00f054036b4fa188282d59d4cb *R/logL_bin1I_aux.R
@@ -41,13 +41,13 @@ b85d911860f066192cd7458f116d22bf *R/vareff_bild.R
 d2f443f7fa3f9c89c473b9a5f5c727ed *data/airpollution.rda
 b1539f945ce4d0150d5efd4c8f26f7a1 *data/locust.rda
 17dc819234e7d3b1f6305dd10f640f81 *data/muscatine.rda
-1939258e29925c72c9cacbd333f02513 *inst/CITATION
+3a9dfab035576c16ca0cb7a3a70306b0 *inst/CITATION
 e55305982a3c6c2eea9a7f50b43d29c9 *man/airpollution.rd
 560a33fa550c91d49ab42eb8a28ecf8a *man/anova-methods.Rd
 0a31249a59032eb65df825a0764a4c56 *man/bild-class.Rd
 2216c64c1cc66cd898cb6e708e34042a *man/bild-internal.Rd
 872239256beb5376111e93498ee45757 *man/bild-package.Rd
-cc79875d212a37b99a3eea4f078bea2c *man/bild.Rd
+7a82cbfcf235d3c2d3285f5540005272 *man/bild.Rd
 a44f67002fe5c9db2f8d9b581c60b04e *man/bildControl.Rd
 2c8b8a7e02df07cab2651b9605b0d089 *man/bildIntegrate.Rd
 b205aa00db6bf756764a070c99abd6d2 *man/fitted-methods.Rd
